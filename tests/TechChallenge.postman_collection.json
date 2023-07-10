@@ -1,0 +1,523 @@
+{
+	"info": {
+		"_postman_id": "4eca1003-1697-437a-929c-640654b2e212",
+		"name": "TechChallenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16032923"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Todos os Clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/Cliente",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome\": \"Teste\",\r\n  \"email\": \"teste@mail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Cliente",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Cliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categoria Produto",
+			"item": [
+				{
+					"name": "Todos as Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/CategoriaProduto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"CategoriaProduto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Lanche",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Lanche\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/CategoriaProduto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"CategoriaProduto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Bebida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Bebida\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/CategoriaProduto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"CategoriaProduto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Sobremesa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"descricao\": \"Sobremesa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/CategoriaProduto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"CategoriaProduto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Todos os Produto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Produto por Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/Produto/produto-por-categoria?categoriaId=3B19F7E7-B517-4C7C-BBE2-625E4FFAB34E",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto",
+								"produto-por-categoria"
+							],
+							"query": [
+								{
+									"key": "categoriaId",
+									"value": "3B19F7E7-B517-4C7C-BBE2-625E4FFAB34E"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Lanche",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"categoriaProdutoId\": \"98C768EC-B7FC-4CBC-A78B-3800B4E0A771\",\r\n  \"nome\": \"X-Salada\",\r\n  \"descricao\": \"Ingredientes: pão, hamburguer e alface\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Bebida",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"categoriaProdutoId\": \"C48CFBD4-144F-4DA0-AE81-A0F3B08D42A8\",\r\n  \"nome\": \"Refri Guaraná\",\r\n  \"descricao\": \"Refrigerante sabor guaraná\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Sobremesa",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"categoriaProdutoId\": \"3B19F7E7-B517-4C7C-BBE2-625E4FFAB34E\",\r\n  \"nome\": \"Sorvete Morango\",\r\n  \"descricao\": \"Soverte sabor morango\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar Nome Bebida",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"C82ED0BF-45FC-495B-BA88-F15B2BA19FF8\",\r\n  \"categoriaProdutoId\": \"C48CFBD4-144F-4DA0-AE81-A0F3B08D42A8\",\r\n  \"nome\": \"Guaraná\",\r\n  \"descricao\": \"Refrigerante sabor guaraná\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": \"C82ED0BF-45FC-495B-BA88-F15B2BA19FF8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Produto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Identificação Cliente",
+			"item": [
+				{
+					"name": "Todas as Identificações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/Identificacao",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Identificacao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valor\": \"12312341234\",\r\n  \"tipodIdentificacaoPedido\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Identificacao",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Identificacao"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Todas os Pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/Pedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valor\": \"12312341234\",\r\n  \"tipodIdentificacaoPedido\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/Pedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"Pedido"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Itens Pedido",
+			"item": [
+				{
+					"name": "Todos os Itens",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:54404/ItemPedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"ItemPedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"valor\": \"12312341234\",\r\n  \"tipodIdentificacaoPedido\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:54404/ItemPedido",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "54404",
+							"path": [
+								"ItemPedido"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
