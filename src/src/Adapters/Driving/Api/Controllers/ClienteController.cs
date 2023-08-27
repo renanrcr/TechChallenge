@@ -44,5 +44,29 @@ namespace TechChallenge.src.Adapters.Driving.Api.Controllers
 
             return Ok(entidade);
         }
+
+        [HttpPut]
+        public async Task<IActionResult?> Put(AtualizaClienteCommand command)
+        {
+            if (!ModelState.IsValid) return null;
+
+            var entidade = await _mediator.Send(command);
+
+            if (!IsOperacaoValida) return BadRequest(ObterNotificacoes());
+
+            return Ok(entidade);
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult?> Delete(DeletaClienteCommand command)
+        {
+            if (!ModelState.IsValid) return null;
+
+            var entidade = await _mediator.Send(command);
+
+            if (!IsOperacaoValida) return BadRequest(ObterNotificacoes());
+
+            return Ok(entidade);
+        }
     }
 }

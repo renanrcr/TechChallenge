@@ -3,14 +3,13 @@ using TechChallenge.src.Core.Domain.Adapters;
 
 namespace TechChallenge.src.Core.Application.Validations.Clientes
 {
-    public class CadastraClienteValidation : ClienteBaseValidation
+    public class DeletaClienteValidation : ClienteBaseValidation
     {
-        public CadastraClienteValidation(IClienteRepository clienteRepository) 
+        public DeletaClienteValidation(IClienteRepository clienteRepository) 
             : base(clienteRepository)
         {
-            ValidarDataCadastro();
-            ValidarNome();
-            ValidarEmail();
+            ValidarExisteClienteCadastrado();
+            ValidarDataExclusao();
         }
     }
 }

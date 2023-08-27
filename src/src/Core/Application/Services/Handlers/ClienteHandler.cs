@@ -9,7 +9,9 @@ using TechChallenge.src.Core.Domain.Entities;
 namespace TechChallenge.src.Handlers
 {
     public class ClienteHandler : BaseService, 
-        IRequestHandler<CadastraClienteCommand, ClienteDTO>
+        IRequestHandler<CadastraClienteCommand, ClienteDTO>,
+        IRequestHandler<AtualizaClienteCommand, ClienteDTO>,
+        IRequestHandler<DeletaClienteCommand, ClienteDTO>
     {
         private IClienteRepository _clienteRepository;
         private readonly IMapper _mapper;
@@ -25,12 +27,36 @@ namespace TechChallenge.src.Handlers
 
         public async Task<ClienteDTO> Handle(CadastraClienteCommand request, CancellationToken cancellationToken)
         {
-            var entidade = await new Cliente().Cadastrar(request);
+            Cliente entidade = await new Cliente().Cadastrar(_clienteRepository, request);
 
             Notificar(entidade.ValidationResult);
 
             if (entidade.IsValid)
                 await _clienteRepository.Adicionar(entidade);
+
+            return _mapper.Map<ClienteDTO>(entidade);
+        }
+
+        public async Task<ClienteDTO> Handle(AtualizaClienteCommand request, CancellationToken cancellationToken)
+        {
+            Cliente entidade = await new Cliente().Atualizar(_clienteRepository, request);
+
+            Notificar(entidade.ValidationResult);
+
+            if (entidade.IsValid)
+                await _clienteRepository.Atualizar(entidade);
+
+            return _mapper.Map<ClienteDTO>(entidade);
+        }
+
+        public async Task<ClienteDTO> Handle(DeletaClienteCommand request, CancellationToken cancellationToken)
+        {
+            Cliente entidade = await new Cliente().Deletar(_clienteRepository, request);
+
+            Notificar(entidade.ValidationResult);
+
+            if (entidade.IsValid)
+                await _clienteRepository.Remover(entidade);
 
             return _mapper.Map<ClienteDTO>(entidade);
         }
