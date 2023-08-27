@@ -16,9 +16,9 @@ namespace TechChallenge.src.Core.Application.Notificacoes
             _notificacoes.Add(notificacao);
         }
 
-        public List<Notificacao> ObterNotificacoes()
+        public object ObterNotificacoes()
         {
-            return _notificacoes;
+            return new { Mensagens = _notificacoes.Select(x => x.Mensagem) };
         }
 
         public bool TemNotificacao()
