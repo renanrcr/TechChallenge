@@ -17,6 +17,8 @@ namespace TechChallenge.src.Core.Domain.Adapters
 
         Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate);
 
+        Task<bool> Existe(Expression<Func<TEntity, bool>> predicate);
+
         Task<int> SaveChanges();
     }
 }
