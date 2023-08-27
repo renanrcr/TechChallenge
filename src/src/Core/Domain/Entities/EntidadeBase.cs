@@ -18,7 +18,7 @@ namespace TechChallenge.src.Core.Domain.Entities
         public bool IsValid => ValidationResult != null && ValidationResult.IsValid;
 
         [NotMapped]
-        public ValidationResult? ValidationResult { get; set; }
+        public ValidationResult ValidationResult { get => ValidationResult ?? new ValidationResult(); set => ValidationResult = value; }
 
         public async Task Validate<TModel>(TModel model, AbstractValidator<TModel> validator)
         {
