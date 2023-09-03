@@ -18,6 +18,10 @@ namespace TechChallenge.src.Adapters.Driven.Infra.Mappings
             builder.HasOne(f => f.Produto)
                 .WithOne(p => p.ItemPedido);
 
+            builder.Property(p => p.Quantidade)
+                .IsRequired()
+                .HasColumnType("decimal(18,4)");
+
             builder.ToTable("ItemPedido");
         }
     }
