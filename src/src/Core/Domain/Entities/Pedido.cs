@@ -9,6 +9,7 @@ namespace TechChallenge.src.Core.Domain.Entities
         public Guid IdentificacaoPedidoId { get; private set; }
         public string? NumeroPedido { get; private set; }
         public EStatusPedido StatusPedido { get; set; }
+        public EStatusPagamentoPedido StatusPagamentoPedido { get; set; }
         public IdentificacaoPedido? IdentificacaoPedido { get; private set; }
         public ItemPedido? ItemPedido { get; internal set; }
 
@@ -16,6 +17,7 @@ namespace TechChallenge.src.Core.Domain.Entities
         {
             Id = Guid.NewGuid();
             IdentificacaoPedidoId = command.IdentificacaoClienteId;
+            StatusPedido = EStatusPedido.EM_PREPARACAO;
             NumeroPedido = RandomString(10);
             DataCadastro = DateTime.Now;
 

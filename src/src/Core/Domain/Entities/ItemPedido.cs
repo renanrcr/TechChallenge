@@ -9,7 +9,7 @@ namespace TechChallenge.src.Core.Domain.Entities
         public Guid PedidoId { get; private set; }
         public Guid ProdutoId { get; private set; }
         public decimal Quantidade { get; private set; }
-        public Produto? Produto { get; private set; }
+        public Produto Produto { get; private set; } = new Produto();
         public Pedido? Pedido { get; private set; }
 
         public async Task<ItemPedido> Cadastrar(IItemPedidoRepository itemPedidoRepository, IProdutoRepository produtoRepository, CadastraItemPedidoCommand command)
