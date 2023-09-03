@@ -24,7 +24,7 @@ namespace TechChallenge.src.Core.Application.Services.Handlers
 
         public async Task<IdentificacaoDTO> Handle(CadastraIdentificacaoPedidoCommand request, CancellationToken cancellationToken)
         {
-            var entidade = await new IdentificacaoPedido().Cadastrar(request);
+            var entidade = await new IdentificacaoPedido().Cadastrar(_identificacaoPedidoRepository, request);
 
             Notificar(entidade.ValidationResult);
 
