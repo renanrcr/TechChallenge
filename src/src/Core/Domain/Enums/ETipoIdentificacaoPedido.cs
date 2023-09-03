@@ -2,8 +2,8 @@
 {
     public enum ETipoIdentificacaoPedido
     {
-        CLIENTE = 0,
-        CPF = 1,
-        NAO_IDENTIFICADO = 2,
+        NAO_IDENTIFICADO = 0,
+        CLIENTE = 1,
+        CPF = 2,
     }
 }
