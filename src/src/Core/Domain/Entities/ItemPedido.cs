@@ -1,4 +1,5 @@
 ﻿using TechChallenge.src.Core.Application.Validations.ItensPedido;
+using TechChallenge.src.Core.Domain.Adapters;
 using TechChallenge.src.Core.Domain.Commands.ItensPedido;
 
 namespace TechChallenge.src.Core.Domain.Entities
@@ -11,7 +12,7 @@ namespace TechChallenge.src.Core.Domain.Entities
         public Produto? Produto { get; private set; }
         public Pedido? Pedido { get; private set; }
 
-        public async Task<ItemPedido> Cadastrar(CadastraItemPedidoCommand command)
+        public async Task<ItemPedido> Cadastrar(IItemPedidoRepository itemPedidoRepository, IProdutoRepository produtoRepository, CadastraItemPedidoCommand command)
         {
             Id = Guid.NewGuid();
             PedidoId = command.PedidoId;
@@ -19,28 +20,27 @@ namespace TechChallenge.src.Core.Domain.Entities
             Quantidade = command.Quantidade;
             DataCadastro = DateTime.Now;
 
-            await Validate(this, new CadastraItemPedidoValidation());
+            await Validate(this, new CadastraItemPedidoValidation(itemPedidoRepository, produtoRepository));
 
             return this;
         }
 
-        public async Task<ItemPedido> Atualizar(AtualizaItemPedidoCommand command)
+        public async Task<ItemPedido> Atualizar(IItemPedidoRepository itemPedidoRepository, IProdutoRepository produtoRepository, AtualizaItemPedidoCommand command)
         {
             Id = command.Id;
             Quantidade = command.Quantidade;
             DataAtualizacao = DateTime.Now;
 
-            await Validate(this, new AtualizaItemPedidoValidation());
+            await Validate(this, new AtualizaItemPedidoValidation(itemPedidoRepository, produtoRepository));
 
             return this;
         }
 
-        public async Task<ItemPedido> Deletar(DeletaItemPedidoCommand command)
+        public async Task<ItemPedido> Deletar(IItemPedidoRepository itemPedidoRepository, IProdutoRepository produtoRepository, DeletaItemPedidoCommand command)
         {
             Id = command.Id;
             DataExclusao = DateTime.Now;
-
-            await Validate(this, new DeletaItemPedidoValidation());
+            await Validate(this, new DeletaItemPedidoValidation(itemPedidoRepository, produtoRepository));
 
             return this;
         }
