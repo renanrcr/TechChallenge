@@ -15,10 +15,6 @@
     <PackageReference Include="Caelum.Stella.CSharp" Version="1.4.7" />
     <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="MediatR" Version="12.0.1" />
-    <PackageReference Include="Microsoft.AspNet.WebHooks.Common" Version="1.2.2" />
-    <PackageReference Include="Microsoft.AspNet.WebHooks.Custom" Version="1.2.2" />
-    <PackageReference Include="Microsoft.AspNet.WebHooks.Receivers" Version="1.2.2" />
-    <PackageReference Include="Microsoft.AspNet.WebHooks.Receivers.Generic" Version="1.2.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
