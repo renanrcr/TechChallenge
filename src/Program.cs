@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using TechChallenge.src.Adapters.Driven.Infra;
 using TechChallenge.src.Adapters.Driven.Infra.DataContext;
+using TechChallenge.src.Core.Domain.Adapters;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,5 +47,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapPost("/webhook", async (HttpContext context, IReceiveWebhook receiveWebook) =>
+{
+    using StreamReader stream = new StreamReader(context.Request.Body);
+    return await receiveWebook.ProcessRequest(await stream.ReadToEndAsync());
+});
 
 app.Run();
