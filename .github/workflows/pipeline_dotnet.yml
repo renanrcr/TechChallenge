@@ -10,7 +10,7 @@ on:
 jobs:
 
   code-analisys:
-    name: Build and analyze
+    name: code-analisys
     runs-on: windows-latest
     steps:
       - name: Set up JDK 17
