@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TechChallenge.src.Core.Application.Notificacoes;
 using TechChallenge.src.Core.Domain.Adapters;
 
 namespace TechChallenge.src.Adapters.Driving.Api.Controllers.Base
@@ -17,6 +16,6 @@ namespace TechChallenge.src.Adapters.Driving.Api.Controllers.Base
 
         protected bool IsOperacaoValida => !_notificador.TemNotificacao();
 
-        protected List<Notificacao> ObterNotificacoes() => _notificador.ObterNotificacoes();
+        protected object ObterNotificacoes() => _notificador.ObterNotificacoes();
     }
 }

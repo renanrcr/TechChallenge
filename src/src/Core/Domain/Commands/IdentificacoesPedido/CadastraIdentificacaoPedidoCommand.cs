@@ -7,6 +7,6 @@ namespace TechChallenge.src.Core.Domain.Commands.IdentificacoesPedido
     public class CadastraIdentificacaoPedidoCommand : IRequest<IdentificacaoDTO>
     {
         public string? Valor { get; set; }
-        public int TipodIdentificacaoPedido { get; set; } = (int)ETipoIdentificacaoPedido.CPF;
+        public int TipodIdentificacaoPedido { get; set; } = (int)ETipoIdentificacaoPedido.NAO_IDENTIFICADO;
     }
 }

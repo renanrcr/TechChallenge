@@ -1,16 +1,23 @@
 ﻿using FluentValidation;
+using TechChallenge.src.Core.Domain.Adapters;
 using TechChallenge.src.Core.Domain.Entities;
 
 namespace TechChallenge.src.Core.Application.Validations.ItensPedido.Base
 {
     public class ItemPedidoBaseValidation : ValidationBase<ItemPedido>
     {
-        public ItemPedidoBaseValidation()
+        private IItemPedidoRepository _itemPedidoRepository;
+        private IProdutoRepository _produtoRepository;
+
+        public ItemPedidoBaseValidation(IItemPedidoRepository itemPedidoRepository, IProdutoRepository produtoRepository)
         {
+            _itemPedidoRepository = itemPedidoRepository;
+            _produtoRepository = produtoRepository;
+
             ValidarId();
             ValidarPedidoId();
             ValidarProdutoId();
-            //ValidarPrecoProduto();
+            ValidarExisteProdutoCadastrado();
         }
 
         public void ValidarPedidoId()
@@ -28,9 +35,15 @@ namespace TechChallenge.src.Core.Application.Validations.ItensPedido.Base
             RuleFor(x => x.ProdutoId).NotNull().NotEmpty().WithMessage("Informe um produto.");
         }
 
-        //public void ValidarPrecoProduto()
-        //{
-        //    RuleFor(x => x.Produto.TabelaPreco.Preco).Equal(0).WithMessage("Produto sem preço.");
-        //}
+        public void ValidarExisteProdutoCadastrado()
+        {
+            RuleFor(s => s.Id).NotEmpty()
+                .MustAsync(ExisteProduto).WithMessage("Produto não cadastrado.");
+        }
+
+        private async Task<bool> ExisteProduto(Guid id, CancellationToken token)
+        {
+            return await _produtoRepository.Existe(x => x.Id == id);
+        }
     }
 }

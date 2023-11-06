@@ -6,6 +6,11 @@ namespace TechChallenge.src.Core.Domain.Entities
 {
     public abstract class EntidadeBase<TId>
     {
+        public EntidadeBase()
+        {
+            ValidationResult = new ValidationResult();
+        }
+
         public TId? Id { get; protected set; }
 
         public DateTime DataCadastro { get; protected set; } = DateTime.Now;
@@ -18,7 +23,7 @@ namespace TechChallenge.src.Core.Domain.Entities
         public bool IsValid => ValidationResult != null && ValidationResult.IsValid;
 
         [NotMapped]
-        public ValidationResult? ValidationResult { get; set; }
+        public ValidationResult ValidationResult { get; set; }
 
         public async Task Validate<TModel>(TModel model, AbstractValidator<TModel> validator)
         {

@@ -6,7 +6,7 @@ namespace TechChallenge.src.Core.Domain.Adapters
     {
         bool TemNotificacao();
 
-        List<Notificacao> ObterNotificacoes();
+        object ObterNotificacoes();
 
         void Handle(Notificacao notificacao);
     }

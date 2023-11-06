@@ -2,9 +2,9 @@
 {
     public enum EStatusPedido
     {
-        RECEBIDO = 0,
+        PRONTO = 0,
         EM_PREPARACAO = 1,
-        PRONTO = 2,
+        RECEBIDO = 2,
         FINALIZADO = 3,
     }
 }

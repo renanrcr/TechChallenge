@@ -1,26 +1,16 @@
-﻿using FluentValidation;
-using TechChallenge.src.Core.Domain.Entities;
+﻿using TechChallenge.src.Core.Application.Validations.Clientes.Base;
+using TechChallenge.src.Core.Domain.Adapters;
 
 namespace TechChallenge.src.Core.Application.Validations.Clientes
 {
-    public class CadastraClienteValidation : ValidationBase<Cliente>
+    public class CadastraClienteValidation : ClienteBaseValidation
     {
-        public CadastraClienteValidation()
+        public CadastraClienteValidation(IClienteRepository clienteRepository) 
+            : base(clienteRepository)
         {
-            ValidarId();
             ValidarDataCadastro();
             ValidarNome();
             ValidarEmail();
-        }
-
-        public void ValidarNome()
-        {
-            RuleFor(x => x.Nome).NotNull().NotEmpty().WithMessage("Informe um nome.");
-        }
-
-        public void ValidarEmail()
-        {
-            RuleFor(x => x.Email).NotNull().NotEmpty().WithMessage("Informe um e-mail válido.");
         }
     }
 }

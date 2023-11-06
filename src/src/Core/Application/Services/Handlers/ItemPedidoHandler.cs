@@ -8,26 +8,29 @@ using TechChallenge.src.Core.Domain.Entities;
 
 namespace TechChallenge.src.Handlers
 {
-    public class ItemPedidoHandler : BaseService, 
+    public class ItemPedidoHandler : BaseService,
         IRequestHandler<CadastraItemPedidoCommand, ItemPedidoDTO>,
         IRequestHandler<AtualizaItemPedidoCommand, ItemPedidoDTO>,
         IRequestHandler<DeletaItemPedidoCommand, ItemPedidoDTO>
     {
         private readonly IMapper _mapper;
         private readonly IItemPedidoRepository _itemPedidoRepository;
+        private readonly IProdutoRepository _produtoRepository;
 
-        public ItemPedidoHandler(INotificador notificador, 
+        public ItemPedidoHandler(INotificador notificador,
             IItemPedidoRepository itemPedidoRepository,
-            IMapper mapper)
+            IMapper mapper,
+            IProdutoRepository produtoRepository)
             : base(notificador)
         {
             _itemPedidoRepository = itemPedidoRepository;
             _mapper = mapper;
+            _produtoRepository = produtoRepository;
         }
 
         public async Task<ItemPedidoDTO> Handle(CadastraItemPedidoCommand request, CancellationToken cancellationToken)
         {
-            var entidade = await new ItemPedido().Cadastrar(request);
+            var entidade = await new ItemPedido().Cadastrar(_itemPedidoRepository, _produtoRepository, request);
 
             Notificar(entidade.ValidationResult);
 
@@ -39,7 +42,7 @@ namespace TechChallenge.src.Handlers
 
         public async Task<ItemPedidoDTO> Handle(AtualizaItemPedidoCommand request, CancellationToken cancellationToken)
         {
-            var entidade = await new ItemPedido().Atualizar(request);
+            var entidade = await new ItemPedido().Atualizar(_itemPedidoRepository, _produtoRepository, request);
 
             Notificar(entidade.ValidationResult);
 
@@ -51,7 +54,7 @@ namespace TechChallenge.src.Handlers
 
         public async Task<ItemPedidoDTO> Handle(DeletaItemPedidoCommand request, CancellationToken cancellationToken)
         {
-            var entidade = await new ItemPedido().Deletar(request);
+            var entidade = await new ItemPedido().Deletar(_itemPedidoRepository, _produtoRepository, request);
 
             Notificar(entidade.ValidationResult);
 
