@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using TechChallenge.src.Adapters.Driven.Infra;
 using TechChallenge.src.Adapters.Driven.Infra.DataContext;
+using TechChallenge.src.Adapters.Driving.Api.Configuration;
 using TechChallenge.src.Core.Domain.Adapters;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Configuration.AddAmazonSecretsManager("us-east-1", "dev-techchallenge-terraform-terraform");
 
 var server = builder.Configuration["DbServer"] ?? "localhost";
 var port = builder.Configuration["DbPort"] ?? "1433"; // Default SQL Server port
